@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Merch — Málaga Hardcore</title>
+  <meta name="description" content="Merchandising de Málaga Hardcore: camisetas, discos y más. Apoya la escena.">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" type="image/png" href="img/logo.png">
+</head>
+<body>
+
+  <!-- ================= CABECERA ================= -->
+  <header class="cabecera">
+    <div class="contenedor">
+      <a href="index.html" class="logo"><img src="img/logo-white.png" alt="Málaga Hardcore"><span class="logo__txt">MÁLAGA<span class="acento">HC</span></span></a>
+      <button class="nav-toggle" aria-label="Abrir menú">&#9776;</button>
+      <nav class="nav">
+        <a href="index.html">Quiénes somos</a>
+        <a href="eventos.html">Eventos</a>
+        <a href="merch.html" class="activo">Merch</a>
+        <a href="historico.html">Histórico</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ================= CABECERA DE PÁGINA ================= -->
+  <section class="hero" style="min-height:42vh;">
+    <div class="hero__contenido">
+      <p class="hero__kicker">Tienda</p>
+      <h1 style="font-size:clamp(2.5rem,10vw,6rem);">Merch</h1>
+      <p>Llévate algo y apoya directamente a la asociación. Cada compra ayuda a que sigan sonando los conciertos.</p>
+    </div>
+  </section>
+
+  <!-- ================= PRODUCTOS ================= -->
+  <section class="seccion">
+    <div class="contenedor">
+      <h2 class="titulo-seccion">Productos</h2>
+      <div class="grid-merch">
+
+        <!-- ===== PRODUCTO (duplica este bloque por cada producto) ===== -->
+        <article class="producto">
+          <div class="producto__img">
+            <!-- <img src="img/merch-camiseta.jpg" alt="Camiseta Málaga Hardcore"> -->
+            FOTO PRODUCTO
+          </div>
+          <div class="producto__cuerpo">
+            <h3>Camiseta Logo</h3>
+            <div class="producto__precio">15 €</div>
+            <a href="https://ENLACE-DE-COMPRA.com" target="_blank" rel="noopener" class="btn btn--sm">Comprar</a>
+          </div>
+        </article>
+
+        <!-- ===== PRODUCTO ===== -->
+        <article class="producto">
+          <div class="producto__img">FOTO PRODUCTO</div>
+          <div class="producto__cuerpo">
+            <h3>Sudadera</h3>
+            <div class="producto__precio">30 €</div>
+            <a href="https://ENLACE-DE-COMPRA.com" target="_blank" rel="noopener" class="btn btn--sm">Comprar</a>
+          </div>
+        </article>
+
+        <!-- ===== PRODUCTO ===== -->
+        <article class="producto">
+          <div class="producto__img">FOTO PRODUCTO</div>
+          <div class="producto__cuerpo">
+            <h3>Vinilo Recopilatorio</h3>
+            <div class="producto__precio">18 €</div>
+            <a href="https://ENLACE-DE-COMPRA.com" target="_blank" rel="noopener" class="btn btn--sm">Comprar</a>
+          </div>
+        </article>
+
+        <!-- ===== PRODUCTO ===== -->
+        <article class="producto">
+          <div class="producto__img">FOTO PRODUCTO</div>
+          <div class="producto__cuerpo">
+            <h3>Pack de Parches</h3>
+            <div class="producto__precio">8 €</div>
+            <a href="https://ENLACE-DE-COMPRA.com" target="_blank" rel="noopener" class="btn btn--sm">Comprar</a>
+          </div>
+        </article>
+
+      </div>
+
+      <p style="text-align:center; color:var(--gris); margin-top:3rem;">
+        ¿Prefieres una tienda online completa? Puedo enlazar esta sección con Bandcamp, Big Cartel,
+        Shopify o similar. Solo dime cuál usáis.
+      </p>
+    </div>
+  </section>
+
+  <!-- ================= PIE ================= -->
+  <footer class="pie">
+    <div class="contenedor">
+      <div>
+        <h4>Málaga Hardcore</h4>
+        <p>Asociación cultural sin ánimo de lucro dedicada a la escena hardcore de Málaga.</p>
+        <div class="redes">
+          <a href="#" aria-label="Instagram">IG</a>
+          <a href="#" aria-label="YouTube">YT</a>
+          <a href="#" aria-label="Bandcamp">BC</a>
+        </div>
+      </div>
+      <div>
+        <h4>Secciones</h4>
+        <ul>
+          <li><a href="index.html">Quiénes somos</a></li>
+          <li><a href="eventos.html">Eventos</a></li>
+          <li><a href="merch.html">Merch</a></li>
+          <li><a href="historico.html">Histórico</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contacto</h4>
+        <ul>
+          <li><a href="mailto:info@malagahardcore.com">info@malagahardcore.com</a></li>
+          <li>Málaga, España</li>
+        </ul>
+      </div>
+    </div>
+    <p class="copyright">© <span id="anio"></span> Málaga Hardcore · Asociación Cultural. Hecho con ruido.</p>
+  </footer>
+
+  <script>
+    document.querySelector('.nav-toggle').addEventListener('click', function () {
+      document.querySelector('.nav').classList.toggle('abierto');
+    });
+    document.getElementById('anio').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

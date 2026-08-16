@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Histórico — Málaga Hardcore</title>
+  <meta name="description" content="Archivo de eventos pasados de Málaga Hardcore: fotos y vídeos de conciertos anteriores.">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" type="image/png" href="img/logo.png">
+</head>
+<body>
+
+  <!-- ================= CABECERA ================= -->
+  <header class="cabecera">
+    <div class="contenedor">
+      <a href="index.html" class="logo"><img src="img/logo-white.png" alt="Málaga Hardcore"><span class="logo__txt">MÁLAGA<span class="acento">HC</span></span></a>
+      <button class="nav-toggle" aria-label="Abrir menú">&#9776;</button>
+      <nav class="nav">
+        <a href="index.html">Quiénes somos</a>
+        <a href="eventos.html">Eventos</a>
+        <a href="merch.html">Merch</a>
+        <a href="historico.html" class="activo">Histórico</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ================= CABECERA DE PÁGINA ================= -->
+  <section class="hero" style="min-height:42vh;">
+    <div class="hero__contenido">
+      <p class="hero__kicker">Archivo</p>
+      <h1 style="font-size:clamp(2.5rem,10vw,6rem);">Histórico</h1>
+      <p>Todo lo que hemos vivido. Fotos y vídeos de conciertos y eventos pasados.</p>
+    </div>
+  </section>
+
+  <!-- ================= EVENTOS PASADOS ================= -->
+  <section class="seccion">
+    <div class="contenedor">
+      <h2 class="titulo-seccion">Eventos pasados</h2>
+
+      <!-- ===== EVENTO PASADO (duplica este bloque por cada evento) ===== -->
+      <article class="historico-item">
+        <div class="historico-item__cab">
+          <h3>Nombre del evento</h3>
+          <span class="fecha">Mayo 2025</span>
+        </div>
+        <p>Breve resumen de la noche: bandas que tocaron, ambientazo, anécdotas... lo que queráis contar.</p>
+
+        <div class="galeria">
+          <!-- Reemplaza cada .foto por: <div class="foto"><img src="img/historico/evento1-1.jpg" alt=""></div> -->
+          <div class="foto">FOTO</div>
+          <div class="foto">FOTO</div>
+          <div class="foto">FOTO</div>
+          <div class="foto">FOTO</div>
+          <div class="foto">FOTO</div>
+          <div class="foto">FOTO</div>
+        </div>
+
+        <div class="enlaces-video">
+          <!-- Enlaza vídeos de YouTube, Instagram, etc. -->
+          <a href="https://youtube.com/ENLACE" target="_blank" rel="noopener" class="btn btn--sm btn--ghost">▶ Vídeo 1</a>
+          <a href="https://youtube.com/ENLACE" target="_blank" rel="noopener" class="btn btn--sm btn--ghost">▶ Vídeo 2</a>
+        </div>
+      </article>
+
+      <!-- ===== EVENTO PASADO ===== -->
+      <article class="historico-item">
+        <div class="historico-item__cab">
+          <h3>Nombre del evento</h3>
+          <span class="fecha">Marzo 2025</span>
+        </div>
+        <p>Breve resumen de la noche.</p>
+
+        <div class="galeria">
+          <div class="foto">FOTO</div>
+          <div class="foto">FOTO</div>
+          <div class="foto">FOTO</div>
+          <div class="foto">FOTO</div>
+        </div>
+
+        <div class="enlaces-video">
+          <a href="https://youtube.com/ENLACE" target="_blank" rel="noopener" class="btn btn--sm btn--ghost">▶ Ver vídeo</a>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ================= PIE ================= -->
+  <footer class="pie">
+    <div class="contenedor">
+      <div>
+        <h4>Málaga Hardcore</h4>
+        <p>Asociación cultural sin ánimo de lucro dedicada a la escena hardcore de Málaga.</p>
+        <div class="redes">
+          <a href="#" aria-label="Instagram">IG</a>
+          <a href="#" aria-label="YouTube">YT</a>
+          <a href="#" aria-label="Bandcamp">BC</a>
+        </div>
+      </div>
+      <div>
+        <h4>Secciones</h4>
+        <ul>
+          <li><a href="index.html">Quiénes somos</a></li>
+          <li><a href="eventos.html">Eventos</a></li>
+          <li><a href="merch.html">Merch</a></li>
+          <li><a href="historico.html">Histórico</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contacto</h4>
+        <ul>
+          <li><a href="mailto:info@malagahardcore.com">info@malagahardcore.com</a></li>
+          <li>Málaga, España</li>
+        </ul>
+      </div>
+    </div>
+    <p class="copyright">© <span id="anio"></span> Málaga Hardcore · Asociación Cultural. Hecho con ruido.</p>
+  </footer>
+
+  <script>
+    document.querySelector('.nav-toggle').addEventListener('click', function () {
+      document.querySelector('.nav').classList.toggle('abierto');
+    });
+    document.getElementById('anio').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
