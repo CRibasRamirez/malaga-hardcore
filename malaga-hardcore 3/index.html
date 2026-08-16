@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Málaga Hardcore — Asociación Cultural</title>
+  <meta name="description" content="Asociación cultural Málaga Hardcore: eventos, conciertos, merch y comunidad hardcore en Málaga.">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" type="image/png" href="img/logo.png">
+</head>
+<body>
+
+  <!-- ================= CABECERA ================= -->
+  <header class="cabecera">
+    <div class="contenedor">
+      <a href="index.html" class="logo">
+        <img src="img/logo-white.png" alt="Málaga Hardcore">
+        <span class="logo__txt">MÁLAGA<span class="acento">HC</span></span>
+      </a>
+      <button class="nav-toggle" aria-label="Abrir menú">&#9776;</button>
+      <nav class="nav">
+        <a href="index.html" class="activo">Quiénes somos</a>
+        <a href="eventos.html">Eventos</a>
+        <a href="merch.html">Merch</a>
+        <a href="historico.html">Histórico</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ================= HERO ================= -->
+  <section class="hero">
+    <div class="hero__contenido">
+      <img src="img/logo-white.png" alt="Málaga Hardcore" class="hero__logo">
+      <p class="hero__kicker">Asociación Cultural · Málaga</p>
+      <h1>Málaga Hardcore</h1>
+      <p>Escena, comunidad y ruido. Organizamos conciertos y actividades para mantener viva la cultura hardcore en Málaga.</p>
+      <a href="eventos.html" class="btn">Próximos eventos</a>
+      <a href="#quienes" class="btn btn--ghost">Conócenos</a>
+    </div>
+  </section>
+
+  <!-- ================= QUIÉNES SOMOS ================= -->
+  <section class="seccion" id="quienes">
+    <div class="contenedor">
+      <h2 class="titulo-seccion">Quiénes somos</h2>
+      <div class="about">
+        <div class="about__texto">
+          <p><!-- TEXTO PROVISIONAL — reemplázalo por vuestra historia real -->
+            <strong>Málaga Hardcore</strong> es una asociación cultural sin ánimo de lucro nacida de
+            la escena underground malagueña. Desde nuestros inicios trabajamos para dar espacio a las
+            bandas locales, traer grupos de fuera y crear un punto de encuentro para todo aquel que
+            siente esta música como algo más que un estilo: una forma de vida.</p>
+          <p>Organizamos conciertos, jornadas y actividades autogestionadas, apostando siempre por el
+            respeto, la inclusión y el apoyo mutuo dentro de la comunidad. Cada evento es un esfuerzo
+            colectivo hecho por y para la gente de la escena.</p>
+          <p>Si compartes estos valores y quieres colaborar, tocar o simplemente formar parte, esta es tu casa.</p>
+          <a href="eventos.html" class="btn btn--sm">Ver agenda</a>
+        </div>
+        <div class="about__img">
+          <!-- Sustituye por una foto: <img src="img/quienes-somos.jpg" alt="Málaga Hardcore"> -->
+          FOTO / IMAGEN
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= ACCESOS RÁPIDOS ================= -->
+  <section class="seccion seccion--alt">
+    <div class="contenedor">
+      <h2 class="titulo-seccion">Explora</h2>
+      <div class="accesos">
+        <div class="acceso">
+          <h3>Eventos</h3>
+          <p>Consulta los próximos conciertos y consigue tus entradas.</p>
+          <a href="eventos.html" class="btn btn--sm btn--ghost">Ir a eventos</a>
+        </div>
+        <div class="acceso">
+          <h3>Merch</h3>
+          <p>Camisetas, discos y más. Apoya la escena llevándote algo.</p>
+          <a href="merch.html" class="btn btn--sm btn--ghost">Ver merch</a>
+        </div>
+        <div class="acceso">
+          <h3>Histórico</h3>
+          <p>Fotos y vídeos de todo lo que hemos vivido juntos.</p>
+          <a href="historico.html" class="btn btn--sm btn--ghost">Ver archivo</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= PIE ================= -->
+  <footer class="pie">
+    <div class="contenedor">
+      <div>
+        <h4>Málaga Hardcore</h4>
+        <p>Asociación cultural sin ánimo de lucro dedicada a la escena hardcore de Málaga.</p>
+        <div class="redes">
+          <a href="#" aria-label="Instagram">IG</a>
+          <a href="#" aria-label="YouTube">YT</a>
+          <a href="#" aria-label="Bandcamp">BC</a>
+        </div>
+      </div>
+      <div>
+        <h4>Secciones</h4>
+        <ul>
+          <li><a href="index.html">Quiénes somos</a></li>
+          <li><a href="eventos.html">Eventos</a></li>
+          <li><a href="merch.html">Merch</a></li>
+          <li><a href="historico.html">Histórico</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contacto</h4>
+        <ul>
+          <li><a href="mailto:info@malagahardcore.com">info@malagahardcore.com</a></li>
+          <li>Málaga, España</li>
+        </ul>
+      </div>
+    </div>
+    <p class="copyright">© <span id="anio"></span> Málaga Hardcore · Asociación Cultural. Hecho con ruido.</p>
+  </footer>
+
+  <script>
+    // Menú móvil
+    document.querySelector('.nav-toggle').addEventListener('click', function () {
+      document.querySelector('.nav').classList.toggle('abierto');
+    });
+    // Año automático
+    document.getElementById('anio').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
