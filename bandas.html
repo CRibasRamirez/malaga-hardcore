@@ -142,7 +142,7 @@
         bandas.sort((a, b) => a.nombre.localeCompare(b.nombre, 'es', { sensitivity: 'base' }));
 
         document.getElementById('conteo').textContent =
-          bandas.length + ' bandas en el directorio. Pincha en un nombre para ver su info.';
+          'Pincha en un nombre para ver su info.';
 
         const lista = document.getElementById('lista-bandas');
         lista.innerHTML = bandas.map((b, i) =>

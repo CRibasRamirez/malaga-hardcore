@@ -408,21 +408,22 @@ h2.titulo-seccion::after {
 .directorio-intro { color: var(--gris-claro); margin-bottom: 2rem; font-size: 1.05rem; }
 .directorio-lista {
   font-family: 'Oswald', sans-serif;
-  font-size: clamp(1.1rem, 2.4vw, 1.5rem);
-  line-height: 2.1;
+  font-size: clamp(1.4rem, 3.2vw, 2.1rem);
+  line-height: 1.9;
   letter-spacing: .5px;
   margin-bottom: 3rem;
 }
 .banda-nombre {
   cursor: pointer;
-  color: var(--gris-claro);
+  color: var(--rojo);
+  font-weight: 700;
   text-transform: uppercase;
   transition: color .15s;
   white-space: nowrap;
 }
 .banda-nombre:hover { color: var(--blanco); }
-.banda-nombre.activa { color: var(--rojo); font-weight: 700; }
-.sep { color: var(--rojo); margin: 0 .55rem; user-select: none; }
+.banda-nombre.activa { color: var(--blanco); text-decoration: underline; text-decoration-color: var(--rojo); text-underline-offset: 5px; }
+.sep { color: var(--gris); margin: 0 .5rem; user-select: none; }
 
 .banda-detalle {
   border: 1px solid var(--borde);
