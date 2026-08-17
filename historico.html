@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Histórico — Málaga Hardcore</title>
-  <meta name="description" content="Archivo de eventos pasados de Málaga Hardcore: fotos y vídeos de conciertos anteriores.">
+  <meta name="description" content="Archivo de eventos pasados de Málaga Hardcore: carteles, fotos y vídeos de conciertos anteriores.">
   <link rel="stylesheet" href="style.css">
   <link rel="icon" type="image/png" href="logo.png">
 </head>
@@ -30,18 +30,16 @@
     <div class="hero__contenido">
       <p class="hero__kicker">Archivo</p>
       <h1 style="font-size:clamp(2.5rem,10vw,6rem);">Histórico</h1>
-      <p>Todo lo que hemos vivido. Fotos y vídeos de conciertos y eventos pasados.</p>
+      <p>Todo lo que hemos vivido. Pincha en un evento para ver su cartel y sus fotos.</p>
     </div>
   </section>
 
-  <!-- ================= PRÓXIMAMENTE ================= -->
+  <!-- ================= EVENTOS PASADOS ================= -->
   <section class="seccion">
-    <div class="contenedor" style="text-align:center;">
-      <h2 class="titulo-seccion">Próximamente</h2>
-      <p style="color:var(--gris-claro); font-size:1.1rem; max-width:600px; margin:0 auto;">
-        Estamos recopilando fotos y vídeos de nuestros conciertos para montar el archivo.
-        ¡Vuelve pronto!
-      </p>
+    <div class="contenedor">
+      <h2 class="titulo-seccion">Eventos pasados</h2>
+      <div class="grid-eventos" id="lista-eventos"></div>
+      <div id="detalle-evento"></div>
     </div>
   </section>
 
@@ -82,6 +80,69 @@
       document.querySelector('.nav').classList.toggle('abierto');
     });
     document.getElementById('anio').textContent = new Date().getFullYear();
+
+    // ===== Eventos del histórico (ordenados del más reciente al más antiguo) =====
+    // Para añadir fotos de un evento: mételas en la carpeta fotos-historico/
+    // y añade sus nombres de archivo al array "fotos", p.ej. fotos: ['mhf2-1.jpg','mhf2-2.jpg']
+    const EVENTOS = [
+      { nombre:'Málaga Hardcore Fest II', fecha:'15–18 Abril 2026', dia:'15', mes:'ABR',
+        lugar:'Peña El Patio · Torremolinos', cartel:'mhf2.jpg', fotos:[] },
+      { nombre:'Fear The Lord + Clericbeast + Times of War', fecha:'8 Noviembre 2025', dia:'08', mes:'NOV',
+        lugar:'Sala Marte · Málaga', cartel:'feartelord.jpg', fotos:[] },
+      { nombre:'El Nueve Once + Hall of Blame + Pachydermo Scato', fecha:'6 Agosto 2025', dia:'06', mes:'AGO',
+        lugar:'Sala Core · Málaga', cartel:'elnueveonce.jpg', fotos:[] },
+      { nombre:'Push! + Selfmade', fecha:'11 Julio 2025', dia:'11', mes:'JUL',
+        lugar:'Sala Core · Málaga', cartel:'push.jpg', fotos:[] },
+      { nombre:'Málaga HXC Sessions', fecha:'23 Mayo 2025', dia:'23', mes:'MAY',
+        lugar:'Sala Marte · Málaga', cartel:'sessions.jpg', fotos:[] },
+      { nombre:'Málaga Hardcore Fest', fecha:'11–12 Abril 2025', dia:'11', mes:'ABR',
+        lugar:'Carretera de Cádiz · Málaga', cartel:'mhf1.jpg', fotos:[] }
+    ];
+
+    const lista = document.getElementById('lista-eventos');
+    lista.innerHTML = EVENTOS.map((e, i) =>
+      '<article class="evento evento--click" data-i="' + i + '">' +
+        '<div class="evento__cartel">' +
+          '<span class="evento__fecha"><span class="dia">' + e.dia + '</span><span class="mes">' + e.mes + '</span></span>' +
+          '<img src="fotos-historico/' + e.cartel + '" alt="' + e.nombre + '">' +
+        '</div>' +
+        '<div class="evento__cuerpo">' +
+          '<h3>' + e.nombre + '</h3>' +
+          '<p class="evento__meta">' + e.fecha + ' · ' + e.lugar + '</p>' +
+        '</div>' +
+      '</article>'
+    ).join('');
+
+    function pintarEvento(e) {
+      const cont = document.getElementById('detalle-evento');
+      let galeria;
+      if (e.fotos && e.fotos.length) {
+        galeria = '<div class="galeria">' + e.fotos.map(f =>
+          '<div class="foto"><img src="fotos-historico/' + f + '" alt="' + e.nombre + '"></div>'
+        ).join('') + '</div>';
+      } else {
+        galeria = '<p class="banda-vacio">Fotos próximamente.</p>';
+      }
+      cont.innerHTML =
+        '<div class="evento-detalle">' +
+          '<div class="evento-detalle__cartel"><img src="fotos-historico/' + e.cartel + '" alt="' + e.nombre + '"></div>' +
+          '<div class="evento-detalle__info">' +
+            '<h3>' + e.nombre + '</h3>' +
+            '<span class="evento-detalle__meta">' + e.fecha + ' · ' + e.lugar + '</span>' +
+            '<h4 class="galeria-titulo">Fotos del evento</h4>' +
+            galeria +
+          '</div>' +
+        '</div>';
+      cont.querySelector('.evento-detalle').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    lista.addEventListener('click', e => {
+      const el = e.target.closest('.evento--click');
+      if (!el) return;
+      lista.querySelectorAll('.evento').forEach(n => n.classList.remove('activa'));
+      el.classList.add('activa');
+      pintarEvento(EVENTOS[+el.dataset.i]);
+    });
   </script>
 </body>
 </html>

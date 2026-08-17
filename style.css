@@ -463,3 +463,40 @@ h2.titulo-seccion::after {
   .banda-detalle { grid-template-columns: 1fr; }
   .banda-detalle .banda-foto { max-width: 260px; margin: 0 auto; }
 }
+
+/* =========================================================
+   HISTÓRICO — eventos clicables
+   ========================================================= */
+.evento--click { cursor: pointer; }
+.evento--click .evento__cuerpo { flex: 1; }
+.evento.activa { border-color: var(--rojo); }
+.evento.activa .evento__fecha { background: var(--rojo); }
+
+.evento-detalle {
+  border: 1px solid var(--borde);
+  border-left: 5px solid var(--rojo);
+  background: var(--negro-2);
+  padding: 2rem;
+  margin-top: 2.5rem;
+  display: grid;
+  grid-template-columns: 340px 1fr;
+  gap: 2.2rem;
+  align-items: start;
+  scroll-margin-top: 90px;
+}
+.evento-detalle__cartel img { width: 100%; border: 1px solid var(--borde); }
+.evento-detalle__info h3 { font-size: clamp(1.7rem, 4vw, 2.5rem); margin-bottom: .5rem; }
+.evento-detalle__meta {
+  display: inline-block; color: var(--rojo);
+  font-family: 'Oswald', sans-serif; text-transform: uppercase;
+  letter-spacing: 1.5px; font-size: .95rem; margin-bottom: 1.6rem;
+}
+.galeria-titulo {
+  font-family: 'Oswald', sans-serif; text-transform: uppercase; letter-spacing: 2px;
+  font-size: 1rem; color: var(--gris-claro); margin: 1.4rem 0 .9rem;
+  border-top: 1px solid var(--borde); padding-top: 1.2rem;
+}
+@media (max-width: 720px) {
+  .evento-detalle { grid-template-columns: 1fr; }
+  .evento-detalle__cartel { max-width: 340px; margin: 0 auto; }
+}
