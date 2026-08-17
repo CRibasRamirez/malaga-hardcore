@@ -1,0 +1,11 @@
+CARPETA DE FOTOS DE BANDAS
+==========================
+Pon aquí las fotos de las bandas (formato .jpg recomendado).
+
+Para que una foto aparezca en el directorio:
+1. Copia la foto en esta carpeta, p.ej.  abysser.jpg
+2. En el archivo  bandas.csv , en la fila de esa banda, escribe el
+   nombre del archivo en la columna  foto :   abysser.jpg
+
+Si la columna "foto" está vacía, en la web se mostrará un recuadro "SIN FOTO".
+Consejo: usa fotos cuadradas o parecidas y nombres sin espacios ni acentos.

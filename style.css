@@ -401,3 +401,64 @@ h2.titulo-seccion::after {
   .accesos { grid-template-columns: 1fr; }
   .pie .contenedor { grid-template-columns: 1fr; }
 }
+
+/* =========================================================
+   DIRECTORIO DE BANDAS
+   ========================================================= */
+.directorio-intro { color: var(--gris-claro); margin-bottom: 2rem; font-size: 1.05rem; }
+.directorio-lista {
+  font-family: 'Oswald', sans-serif;
+  font-size: clamp(1.1rem, 2.4vw, 1.5rem);
+  line-height: 2.1;
+  letter-spacing: .5px;
+  margin-bottom: 3rem;
+}
+.banda-nombre {
+  cursor: pointer;
+  color: var(--gris-claro);
+  text-transform: uppercase;
+  transition: color .15s;
+  white-space: nowrap;
+}
+.banda-nombre:hover { color: var(--blanco); }
+.banda-nombre.activa { color: var(--rojo); font-weight: 700; }
+.sep { color: var(--rojo); margin: 0 .55rem; user-select: none; }
+
+.banda-detalle {
+  border: 1px solid var(--borde);
+  background: var(--negro-2);
+  border-left: 5px solid var(--rojo);
+  padding: 2rem;
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: 2rem;
+  align-items: start;
+  scroll-margin-top: 90px;
+}
+.banda-detalle .banda-foto {
+  aspect-ratio: 1;
+  background: var(--negro-3);
+  border: 1px solid var(--borde);
+  display: flex; align-items: center; justify-content: center;
+  overflow: hidden;
+}
+.banda-detalle .banda-foto img { width: 100%; height: 100%; object-fit: cover; }
+.banda-detalle .banda-foto .sinfoto {
+  color: var(--gris); font-family: 'Oswald', sans-serif;
+  text-transform: uppercase; letter-spacing: 2px; font-size: .8rem; text-align: center;
+}
+.banda-detalle h3 { font-size: clamp(1.8rem, 4vw, 2.6rem); margin-bottom: .4rem; }
+.banda-genero {
+  display: inline-block;
+  color: var(--rojo);
+  font-family: 'Oswald', sans-serif;
+  text-transform: uppercase; letter-spacing: 2px; font-size: .95rem;
+  margin-bottom: 1.4rem;
+}
+.banda-enlaces { display: flex; flex-wrap: wrap; gap: .7rem; }
+.banda-vacio { color: var(--gris); }
+
+@media (max-width: 680px) {
+  .banda-detalle { grid-template-columns: 1fr; }
+  .banda-detalle .banda-foto { max-width: 260px; margin: 0 auto; }
+}

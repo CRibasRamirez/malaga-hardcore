@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bandas — Málaga Hardcore</title>
+  <meta name="description" content="Directorio de bandas de la escena Hardcore/Metal/Punk de Málaga.">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/png" href="logo.png">
+</head>
+<body>
+
+  <!-- ================= CABECERA ================= -->
+  <header class="cabecera">
+    <div class="contenedor">
+      <a href="index.html" class="logo"><img src="logo-white.png" alt="Málaga Hardcore"><span class="logo__txt">MÁLAGA <span class="acento">HARDCORE</span></span></a>
+      <button class="nav-toggle" aria-label="Abrir menú">&#9776;</button>
+      <nav class="nav">
+        <a href="index.html">Quiénes somos</a>
+        <a href="eventos.html">Eventos</a>
+        <a href="bandas.html" class="activo">Bandas</a>
+        <a href="merch.html">Merch</a>
+        <a href="historico.html">Histórico</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ================= CABECERA DE PÁGINA ================= -->
+  <section class="hero" style="min-height:42vh;">
+    <div class="hero__contenido">
+      <p class="hero__kicker">Escena local</p>
+      <h1 style="font-size:clamp(2.2rem,9vw,5.5rem);">Directorio de Bandas</h1>
+      <p>Las bandas de la escena Hardcore / Metal / Punk de Málaga. Pincha en un nombre para ver su info.</p>
+    </div>
+  </section>
+
+  <!-- ================= DIRECTORIO ================= -->
+  <section class="seccion">
+    <div class="contenedor">
+      <h2 class="titulo-seccion">Bandas</h2>
+      <p class="directorio-intro" id="conteo">Cargando bandas…</p>
+
+      <div class="directorio-lista" id="lista-bandas"></div>
+
+      <div id="detalle-banda"></div>
+    </div>
+  </section>
+
+  <!-- ================= PIE ================= -->
+  <footer class="pie">
+    <div class="contenedor">
+      <div>
+        <h4>Málaga Hardcore</h4>
+        <p>Asociación cultural sin ánimo de lucro dedicada a la escena hardcore de Málaga.</p>
+        <div class="redes">
+          <a href="https://www.instagram.com/malagahardcore/?hl=es" target="_blank" rel="noopener" aria-label="Instagram">IG</a>
+          <a href="https://www.youtube.com/@M%C3%A1lagaHardcore" target="_blank" rel="noopener" aria-label="YouTube">YT</a>
+        </div>
+      </div>
+      <div>
+        <h4>Secciones</h4>
+        <ul>
+          <li><a href="index.html">Quiénes somos</a></li>
+          <li><a href="eventos.html">Eventos</a></li>
+          <li><a href="bandas.html">Bandas</a></li>
+          <li><a href="merch.html">Merch</a></li>
+          <li><a href="historico.html">Histórico</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contacto</h4>
+        <ul>
+          <li><a href="mailto:info@malagahardcore.com">info@malagahardcore.com</a></li>
+          <li>Málaga, España</li>
+        </ul>
+      </div>
+    </div>
+    <p class="copyright">© <span id="anio"></span> Málaga Hardcore · Asociación Cultural. Hecho con ruido.</p>
+  </footer>
+
+  <script>
+    document.querySelector('.nav-toggle').addEventListener('click', function () {
+      document.querySelector('.nav').classList.toggle('abierto');
+    });
+    document.getElementById('anio').textContent = new Date().getFullYear();
+
+    // ---- Parser CSV sencillo (soporta comillas) ----
+    function parseCSV(text) {
+      const rows = []; let row = [], field = '', inQ = false;
+      text = text.replace(/\r\n/g, '\n').replace(/\r/g, '\n');
+      for (let i = 0; i < text.length; i++) {
+        const c = text[i];
+        if (inQ) {
+          if (c === '"') { if (text[i+1] === '"') { field += '"'; i++; } else inQ = false; }
+          else field += c;
+        } else {
+          if (c === '"') inQ = true;
+          else if (c === ',') { row.push(field); field = ''; }
+          else if (c === '\n') { row.push(field); rows.push(row); row = []; field = ''; }
+          else field += c;
+        }
+      }
+      if (field.length || row.length) { row.push(field); rows.push(row); }
+      return rows;
+    }
+
+    // ---- Botones de enlaces ----
+    const REDES = [
+      ['instagram','Instagram'], ['facebook','Facebook'], ['tiktok','TikTok'],
+      ['youtube','YouTube'], ['spotify','Spotify'], ['bandcamp','Bandcamp']
+    ];
+
+    function pintarDetalle(b) {
+      const cont = document.getElementById('detalle-banda');
+      const foto = b.foto
+        ? '<img src="fotos-bandas/' + b.foto + '" alt="' + b.nombre + '">'
+        : '<span class="sinfoto">SIN<br>FOTO</span>';
+      let enlaces = REDES.filter(r => b[r[0]]).map(r =>
+        '<a href="' + b[r[0]] + '" target="_blank" rel="noopener" class="btn btn--sm btn--ghost">' + r[1] + '</a>'
+      ).join('');
+      if (!enlaces) enlaces = '<span class="banda-vacio">Sin enlaces todavía.</span>';
+      cont.innerHTML =
+        '<div class="banda-detalle">' +
+          '<div class="banda-foto">' + foto + '</div>' +
+          '<div class="banda-info">' +
+            '<h3>' + b.nombre + '</h3>' +
+            (b.genero ? '<span class="banda-genero">' + b.genero + '</span>' : '') +
+            '<div class="banda-enlaces">' + enlaces + '</div>' +
+          '</div>' +
+        '</div>';
+      cont.querySelector('.banda-detalle').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    fetch('bandas.csv')
+      .then(r => { if (!r.ok) throw new Error(r.status); return r.text(); })
+      .then(text => {
+        const rows = parseCSV(text).filter(r => r.length > 1 && r[0].trim());
+        const head = rows.shift().map(h => h.trim().toLowerCase());
+        const bandas = rows.map(r => {
+          const o = {}; head.forEach((h, i) => o[h] = (r[i] || '').trim()); return o;
+        }).filter(b => b.nombre);
+        bandas.sort((a, b) => a.nombre.localeCompare(b.nombre, 'es', { sensitivity: 'base' }));
+
+        document.getElementById('conteo').textContent =
+          bandas.length + ' bandas en el directorio. Pincha en un nombre para ver su info.';
+
+        const lista = document.getElementById('lista-bandas');
+        lista.innerHTML = bandas.map((b, i) =>
+          '<span class="banda-nombre" data-i="' + i + '">' + b.nombre + '</span>'
+        ).join(' <span class="sep">·</span> ');
+
+        lista.addEventListener('click', e => {
+          const el = e.target.closest('.banda-nombre');
+          if (!el) return;
+          lista.querySelectorAll('.banda-nombre').forEach(n => n.classList.remove('activa'));
+          el.classList.add('activa');
+          pintarDetalle(bandas[+el.dataset.i]);
+        });
+      })
+      .catch(err => {
+        document.getElementById('conteo').innerHTML =
+          'No se ha podido cargar el listado. El directorio funciona en la web publicada ' +
+          '(GitHub Pages); si abres el archivo directamente en el ordenador puede que no cargue el CSV.';
+        console.error('Error cargando bandas.csv:', err);
+      });
+  </script>
+</body>
+</html>
