@@ -26,7 +26,7 @@
   </header>
 
   <!-- ================= CABECERA DE PÁGINA ================= -->
-  <section class="hero" style="min-height:42vh;">
+  <section class="hero" style="min-height:38vh; border-bottom:none;">
     <div class="hero__contenido">
       <p class="hero__kicker">Escena local</p>
       <h1 style="font-size:clamp(2.2rem,9vw,5.5rem);">Directorio de Bandas</h1>
@@ -35,12 +35,9 @@
   </section>
 
   <!-- ================= DIRECTORIO ================= -->
-  <section class="seccion">
+  <section class="seccion" style="padding-top:1rem;">
     <div class="contenedor">
-      <h2 class="titulo-seccion">Bandas</h2>
-      <p class="directorio-intro" id="conteo">Cargando bandas…</p>
-
-      <div class="directorio-lista" id="lista-bandas"></div>
+      <div class="directorio-lista" id="lista-bandas">Cargando bandas…</div>
 
       <div id="detalle-banda"></div>
     </div>
@@ -141,9 +138,6 @@
         }).filter(b => b.nombre);
         bandas.sort((a, b) => a.nombre.localeCompare(b.nombre, 'es', { sensitivity: 'base' }));
 
-        document.getElementById('conteo').textContent =
-          'Pincha en un nombre para ver su info.';
-
         const lista = document.getElementById('lista-bandas');
         lista.innerHTML = bandas.map((b, i) =>
           '<span class="banda-nombre" data-i="' + i + '">' + b.nombre + '</span>'
@@ -158,9 +152,9 @@
         });
       })
       .catch(err => {
-        document.getElementById('conteo').innerHTML =
-          'No se ha podido cargar el listado. El directorio funciona en la web publicada ' +
-          '(GitHub Pages); si abres el archivo directamente en el ordenador puede que no cargue el CSV.';
+        document.getElementById('lista-bandas').innerHTML =
+          '<span class="banda-vacio">No se ha podido cargar el listado. El directorio funciona en la web ' +
+          'publicada (GitHub Pages); si abres el archivo directamente en el ordenador puede que no cargue el CSV.</span>';
         console.error('Error cargando bandas.csv:', err);
       });
   </script>
