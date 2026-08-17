@@ -500,3 +500,17 @@ h2.titulo-seccion::after {
   .evento-detalle { grid-template-columns: 1fr; }
   .evento-detalle__cartel { max-width: 340px; margin: 0 auto; }
 }
+
+/* separador de año en el histórico */
+.historico-anio {
+  font-family: 'Anton', sans-serif;
+  font-size: clamp(1.7rem, 5vw, 2.8rem);
+  color: var(--rojo);
+  letter-spacing: 2px;
+  margin: 3rem 0 1.6rem;
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+}
+.historico-anio::after { content: ""; flex: 1; height: 2px; background: var(--borde); }
+.historico-anio:first-child { margin-top: 0; }

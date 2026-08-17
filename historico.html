@@ -38,7 +38,7 @@
   <section class="seccion">
     <div class="contenedor">
       <h2 class="titulo-seccion">Eventos pasados</h2>
-      <div class="grid-eventos" id="lista-eventos"></div>
+      <div id="lista-eventos"></div>
       <div id="detalle-evento"></div>
     </div>
   </section>
@@ -85,23 +85,22 @@
     // Para añadir fotos de un evento: mételas en la carpeta fotos-historico/
     // y añade sus nombres de archivo al array "fotos", p.ej. fotos: ['mhf2-1.jpg','mhf2-2.jpg']
     const EVENTOS = [
-      { nombre:'Málaga Hardcore Fest II', fecha:'15–18 Abril 2026', dia:'15', mes:'ABR',
+      { anio:2026, nombre:'Málaga Hardcore Fest II', fecha:'15–18 Abril 2026', dia:'15', mes:'ABR',
         lugar:'Peña El Patio · Torremolinos', cartel:'mhf2.jpg', fotos:[] },
-      { nombre:'Fear The Lord + Clericbeast + Times of War', fecha:'8 Noviembre 2025', dia:'08', mes:'NOV',
+      { anio:2025, nombre:'Fear The Lord + Clericbeast + Times of War', fecha:'8 Noviembre 2025', dia:'08', mes:'NOV',
         lugar:'Sala Marte · Málaga', cartel:'feartelord.jpg', fotos:[] },
-      { nombre:'El Nueve Once + Hall of Blame + Pachydermo Scato', fecha:'6 Agosto 2025', dia:'06', mes:'AGO',
+      { anio:2025, nombre:'El Nueve Once + Hall of Blame + Pachydermo Scato', fecha:'6 Agosto 2025', dia:'06', mes:'AGO',
         lugar:'Sala Core · Málaga', cartel:'elnueveonce.jpg', fotos:[] },
-      { nombre:'Push! + Selfmade', fecha:'11 Julio 2025', dia:'11', mes:'JUL',
+      { anio:2025, nombre:'Push! + Selfmade', fecha:'11 Julio 2025', dia:'11', mes:'JUL',
         lugar:'Sala Core · Málaga', cartel:'push.jpg', fotos:[] },
-      { nombre:'Málaga HXC Sessions', fecha:'23 Mayo 2025', dia:'23', mes:'MAY',
+      { anio:2025, nombre:'Málaga HXC Sessions', fecha:'23 Mayo 2025', dia:'23', mes:'MAY',
         lugar:'Sala Marte · Málaga', cartel:'sessions.jpg', fotos:[] },
-      { nombre:'Málaga Hardcore Fest', fecha:'11–12 Abril 2025', dia:'11', mes:'ABR',
+      { anio:2025, nombre:'Málaga Hardcore Fest', fecha:'11–12 Abril 2025', dia:'11', mes:'ABR',
         lugar:'Carretera de Cádiz · Málaga', cartel:'mhf1.jpg', fotos:[] }
     ];
 
-    const lista = document.getElementById('lista-eventos');
-    lista.innerHTML = EVENTOS.map((e, i) =>
-      '<article class="evento evento--click" data-i="' + i + '">' +
+    function cardHTML(e, i) {
+      return '<article class="evento evento--click" data-i="' + i + '">' +
         '<div class="evento__cartel">' +
           '<span class="evento__fecha"><span class="dia">' + e.dia + '</span><span class="mes">' + e.mes + '</span></span>' +
           '<img src="fotos-historico/' + e.cartel + '" alt="' + e.nombre + '">' +
@@ -110,8 +109,21 @@
           '<h3>' + e.nombre + '</h3>' +
           '<p class="evento__meta">' + e.fecha + ' · ' + e.lugar + '</p>' +
         '</div>' +
-      '</article>'
-    ).join('');
+      '</article>';
+    }
+
+    const lista = document.getElementById('lista-eventos');
+    let html = '', anioActual = null;
+    EVENTOS.forEach((e, i) => {
+      if (e.anio !== anioActual) {
+        if (anioActual !== null) html += '</div>';
+        html += '<h3 class="historico-anio">' + e.anio + '</h3><div class="grid-eventos">';
+        anioActual = e.anio;
+      }
+      html += cardHTML(e, i);
+    });
+    if (anioActual !== null) html += '</div>';
+    lista.innerHTML = html;
 
     function pintarEvento(e) {
       const cont = document.getElementById('detalle-evento');
