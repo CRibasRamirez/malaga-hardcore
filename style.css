@@ -223,7 +223,7 @@ h2.titulo-seccion::after {
 /* fila de accesos rápidos */
 .accesos {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 1.5rem;
   margin-top: 1rem;
 }
@@ -566,3 +566,6 @@ h2.titulo-seccion::after {
 .form-banda input:focus { outline: none; border-color: var(--rojo); }
 .form-banda .btn { justify-self: start; margin-top: .4rem; border: 0; }
 .form-nota { font-size: .82rem; color: var(--gris); text-transform: none; letter-spacing: 0; }
+
+/* iconos de redes en el pie */
+.redes a svg { display: block; }
