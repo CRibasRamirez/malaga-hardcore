@@ -514,3 +514,55 @@ h2.titulo-seccion::after {
 }
 .historico-anio::after { content: ""; flex: 1; height: 2px; background: var(--borde); }
 .historico-anio:first-child { margin-top: 0; }
+
+/* =========================================================
+   FORMULARIO "SÚMATE" (directorio de bandas)
+   ========================================================= */
+.sumate {
+  border: 1px solid var(--borde);
+  background: var(--negro-2);
+  margin-top: 3.5rem;
+}
+.sumate summary {
+  cursor: pointer;
+  list-style: none;
+  padding: 1.3rem 1.6rem;
+  font-family: 'Oswald', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 600;
+  color: var(--gris-claro);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  transition: color .2s;
+}
+.sumate summary::-webkit-details-marker { display: none; }
+.sumate summary .acento { color: var(--rojo); }
+.sumate summary::after { content: "+"; color: var(--rojo); font-family: 'Anton', sans-serif; font-size: 1.7rem; line-height: 1; }
+.sumate[open] summary::after { content: "\2013"; }
+.sumate summary:hover { color: var(--blanco); }
+.form-banda {
+  padding: .4rem 1.6rem 1.9rem;
+  display: grid;
+  gap: 1.1rem;
+  max-width: 560px;
+  border-top: 1px solid var(--borde);
+}
+.form-banda label {
+  display: flex; flex-direction: column; gap: .4rem;
+  font-family: 'Oswald', sans-serif; text-transform: uppercase;
+  letter-spacing: 1px; font-size: .8rem; color: var(--gris-claro);
+}
+.form-banda input {
+  background: var(--negro-3);
+  border: 1px solid var(--borde);
+  color: var(--blanco);
+  padding: .7rem .8rem;
+  font-family: 'Oswald', sans-serif;
+  font-size: 1rem;
+}
+.form-banda input:focus { outline: none; border-color: var(--rojo); }
+.form-banda .btn { justify-self: start; margin-top: .4rem; border: 0; }
+.form-nota { font-size: .82rem; color: var(--gris); text-transform: none; letter-spacing: 0; }

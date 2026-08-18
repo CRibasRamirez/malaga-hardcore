@@ -40,6 +40,27 @@
       <div class="directorio-lista" id="lista-bandas">Cargando bandas…</div>
 
       <div id="detalle-banda"></div>
+
+      <!-- ===== Formulario: súmate al directorio ===== -->
+      <details class="sumate">
+        <summary>¿Tu banda quiere aparecer aquí? <span class="acento">Súmate</span></summary>
+        <form class="form-banda" id="form-banda">
+          <label>Nombre de la banda *
+            <input type="text" name="nombre" required>
+          </label>
+          <label>Género *
+            <input type="text" name="genero" placeholder="Hardcore, Death Metal, Punk…" required>
+          </label>
+          <label>URL a redes sociales
+            <input type="url" name="redes" placeholder="https://instagram.com/tubanda">
+          </label>
+          <label>URL a Spotify
+            <input type="url" name="spotify" placeholder="https://open.spotify.com/artist/…">
+          </label>
+          <button type="submit" class="btn">Enviar solicitud</button>
+          <p class="form-nota">Al enviar se abrirá tu correo con los datos ya escritos para mandárnoslos a info@malagahxc.com. Los revisamos y añadimos tu banda al directorio.</p>
+        </form>
+      </details>
     </div>
   </section>
 
@@ -157,6 +178,25 @@
           'publicada (GitHub Pages); si abres el archivo directamente en el ordenador puede que no cargue el CSV.</span>';
         console.error('Error cargando bandas.csv:', err);
       });
+
+    // ---- Formulario "súmate": abre el correo con los datos ----
+    const formBanda = document.getElementById('form-banda');
+    if (formBanda) formBanda.addEventListener('submit', function (e) {
+      e.preventDefault();
+      const f = e.target;
+      const nombre  = f.nombre.value.trim();
+      const genero  = f.genero.value.trim();
+      const redes   = f.redes.value.trim();
+      const spotify = f.spotify.value.trim();
+      const asunto = 'Nueva banda para el directorio: ' + nombre;
+      const cuerpo =
+        'Nombre de la banda: ' + nombre + '\n' +
+        'Género: ' + genero + '\n' +
+        'Redes sociales: ' + (redes || '-') + '\n' +
+        'Spotify: ' + (spotify || '-') + '\n';
+      window.location.href = 'mailto:info@malagahxc.com?subject=' +
+        encodeURIComponent(asunto) + '&body=' + encodeURIComponent(cuerpo);
+    });
   </script>
 </body>
 </html>
