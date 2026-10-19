@@ -58,6 +58,7 @@
   <section class="hero hero--carrusel">
     <!-- Carrusel de carteles de fondo: se rellena solo con los datos de eventos-data.js -->
     <div class="hero__carrusel" aria-hidden="true"><div class="hero__pista" id="carrusel"></div></div>
+    <button class="hero__pausa" id="carrusel-pausa" aria-label="Pausar carrusel">&#10074;&#10074;</button>
     <div class="hero__contenido">
       <img src="logo-white.png" alt="Málaga Hardcore" class="hero__logo">
       <p class="hero__kicker">Asociación Cultural · Málaga</p>
@@ -177,6 +178,11 @@
     const pista = document.getElementById('carrusel');
     pista.innerHTML = carteles + carteles;   // duplicado para que el bucle sea continuo
     pista.style.animationDuration = (PROXIMOS.length + HISTORICO.length) * 5 + 's';
+    document.getElementById('carrusel-pausa').addEventListener('click', function () {
+      const pausado = this.closest('.hero').classList.toggle('pausado');
+      this.innerHTML = pausado ? '&#9654;' : '&#10074;&#10074;';
+      this.setAttribute('aria-label', pausado ? 'Reanudar carrusel' : 'Pausar carrusel');
+    });
   </script>
 </body>
 </html>

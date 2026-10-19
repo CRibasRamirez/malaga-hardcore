@@ -590,7 +590,18 @@ h2.titulo-seccion::after {
   display: flex; gap: 1.2rem; width: max-content;
   animation: hero-desliza 60s linear infinite;
 }
-.hero--carrusel:hover .hero__pista { animation-play-state: paused; }
+.hero--carrusel.pausado .hero__pista { animation-play-state: paused; }
+
+/* botón discreto de pausa, abajo a la derecha */
+.hero__pausa {
+  position: absolute; right: 1rem; bottom: 1rem; z-index: 3;
+  width: 34px; height: 34px;
+  background: rgba(10,10,10,.6); color: var(--gris);
+  border: 1px solid var(--borde); border-radius: 50%;
+  font-size: .75rem; line-height: 1; cursor: pointer;
+  opacity: .6; transition: opacity .2s, color .2s, border-color .2s;
+}
+.hero__pausa:hover, .hero__pausa:focus-visible { opacity: 1; color: var(--blanco); border-color: var(--rojo); }
 @keyframes hero-desliza { to { transform: translateX(-50%); } }
 
 .hero__cartel {
