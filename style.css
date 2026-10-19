@@ -220,6 +220,26 @@ h2.titulo-seccion::after {
 }
 .about__img img { width: 100%; height: 100%; object-fit: cover; }
 
+/* cómo empezó: mural + carteles del festival */
+.origen { margin-top: 4.5rem; }
+.origen__mural { border: 1px solid var(--borde); border-left: 6px solid var(--rojo); overflow: hidden; }
+.origen__mural img { width: 100%; height: auto; }
+.origen__cuerpo {
+  display: grid; grid-template-columns: 1.4fr 1fr; gap: 3rem;
+  align-items: start; margin-top: 2rem;
+}
+.origen__texto h3 { font-size: clamp(1.6rem, 3.5vw, 2.2rem); margin-bottom: 1rem; }
+.origen__texto p { margin-bottom: 1.1rem; color: var(--gris-claro); font-size: 1.05rem; }
+.origen__carteles { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.origen__cartel { display: block; border: 1px solid var(--borde); background: var(--negro-2); transition: border-color .2s, transform .12s; }
+.origen__cartel:hover { border-color: var(--rojo); transform: translateY(-3px); }
+.origen__cartel img { width: 100%; aspect-ratio: 3/4; object-fit: cover; }
+.origen__cartel span {
+  display: block; padding: .5rem .7rem;
+  font-family: 'Oswald', sans-serif; font-weight: 500;
+  text-transform: uppercase; letter-spacing: 1.5px; font-size: .8rem; color: var(--gris-claro);
+}
+
 /* fila de accesos rápidos */
 .accesos {
   display: grid;
@@ -398,6 +418,8 @@ h2.titulo-seccion::after {
   .nav a { padding: .9rem 1.2rem; border-bottom: 1px solid var(--borde); }
   .nav-toggle { display: block; }
   .about { grid-template-columns: 1fr; }
+  .origen__cuerpo { grid-template-columns: 1fr; }
+  .origen__carteles { max-width: 420px; }
   .accesos { grid-template-columns: 1fr; }
   .pie .contenedor { grid-template-columns: 1fr; }
 }
