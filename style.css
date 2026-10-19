@@ -203,13 +203,13 @@ h2.titulo-seccion::after {
    ========================================================= */
 .about {
   display: grid;
-  grid-template-columns: 1.2fr 1fr;
+  grid-template-columns: 1fr 1fr;
   gap: 3rem;
   align-items: center;
 }
 .about p { margin-bottom: 1.1rem; color: var(--gris-claro); font-size: 1.05rem; }
 .about__img {
-  aspect-ratio: 4/5;
+  aspect-ratio: 16/10;
   background: var(--negro-3);
   border: 1px solid var(--borde);
   display: flex; align-items: center; justify-content: center;
@@ -220,24 +220,32 @@ h2.titulo-seccion::after {
 }
 .about__img img { width: 100%; height: 100%; object-fit: cover; }
 
-/* cómo empezó: mural + carteles del festival */
-.origen { margin-top: 4.5rem; }
-.origen__mural { border: 1px solid var(--borde); border-left: 6px solid var(--rojo); overflow: hidden; }
-.origen__mural img { width: 100%; height: auto; }
-.origen__cuerpo {
-  display: grid; grid-template-columns: 1.4fr 1fr; gap: 3rem;
-  align-items: start; margin-top: 2rem;
+/* cómo empezó: mural a un lado, texto y carteles pequeños al otro */
+.origen {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 3rem;
+  align-items: center;
+  margin-top: 5rem; padding-top: 4rem; border-top: 1px solid var(--borde);
 }
-.origen__texto h3 { font-size: clamp(1.6rem, 3.5vw, 2.2rem); margin-bottom: 1rem; }
+.origen__mural { border: 1px solid var(--borde); overflow: hidden; }
+.origen__mural figcaption {
+  padding: .5rem .8rem; background: var(--negro-2);
+  font-family: 'Oswald', sans-serif; text-transform: uppercase; letter-spacing: 1px;
+  font-size: .75rem; color: var(--gris);
+}
+.origen__mural figcaption a { color: var(--gris-claro); transition: color .2s; }
+.origen__mural figcaption a:hover { color: var(--rojo); }
+.origen__mural img { width: 100%; aspect-ratio: 16/10; object-fit: cover; object-position: center 62%; }
+.origen__texto h3 { font-size: clamp(1.5rem, 3vw, 2rem); margin-bottom: 1rem; }
 .origen__texto p { margin-bottom: 1.1rem; color: var(--gris-claro); font-size: 1.05rem; }
-.origen__carteles { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-.origen__cartel { display: block; border: 1px solid var(--borde); background: var(--negro-2); transition: border-color .2s, transform .12s; }
-.origen__cartel:hover { border-color: var(--rojo); transform: translateY(-3px); }
-.origen__cartel img { width: 100%; aspect-ratio: 3/4; object-fit: cover; }
+.origen__carteles { display: flex; gap: .9rem; margin-top: 1.6rem; }
+.origen__cartel { width: 96px; transition: transform .12s; }
+.origen__cartel:hover { transform: translateY(-3px); }
+.origen__cartel img { width: 100%; aspect-ratio: 3/4; object-fit: cover; border: 1px solid var(--borde); transition: border-color .2s; }
+.origen__cartel:hover img { border-color: var(--rojo); }
 .origen__cartel span {
-  display: block; padding: .5rem .7rem;
+  display: block; margin-top: .4rem;
   font-family: 'Oswald', sans-serif; font-weight: 500;
-  text-transform: uppercase; letter-spacing: 1.5px; font-size: .8rem; color: var(--gris-claro);
+  text-transform: uppercase; letter-spacing: 1px; font-size: .7rem; color: var(--gris);
 }
 
 /* fila de accesos rápidos */
@@ -418,8 +426,7 @@ h2.titulo-seccion::after {
   .nav a { padding: .9rem 1.2rem; border-bottom: 1px solid var(--borde); }
   .nav-toggle { display: block; }
   .about { grid-template-columns: 1fr; }
-  .origen__cuerpo { grid-template-columns: 1fr; }
-  .origen__carteles { max-width: 420px; }
+  .origen { grid-template-columns: 1fr; gap: 2rem; }
   .accesos { grid-template-columns: 1fr; }
   .pie .contenedor { grid-template-columns: 1fr; }
 }
