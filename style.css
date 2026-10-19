@@ -246,7 +246,24 @@ h2.titulo-seccion::after {
 }
 .origen__mural figcaption a { color: var(--gris-claro); transition: color .2s; }
 .origen__mural figcaption a:hover { color: var(--rojo); }
-.origen__mural img { width: 100%; aspect-ratio: 16/10; object-fit: cover; object-position: center 62%; }
+.galeria-mini { position: relative; aspect-ratio: 16/10; background: var(--negro-3); }
+.galeria-mini img {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  object-fit: cover; object-position: center 62%;
+  opacity: 0; transition: opacity .4s;
+}
+.galeria-mini img.activa { opacity: 1; }
+.galeria-mini__btn {
+  position: absolute; top: 50%; transform: translateY(-50%); z-index: 1;
+  width: 38px; height: 38px; border-radius: 50%;
+  background: rgba(10,10,10,.6); color: var(--blanco);
+  border: 1px solid rgba(255,255,255,.25);
+  font-size: 1.5rem; line-height: 1; cursor: pointer;
+  transition: background .2s, border-color .2s;
+}
+.galeria-mini__btn:hover { background: var(--rojo); border-color: var(--rojo); }
+.galeria-mini__btn--prev { left: .7rem; }
+.galeria-mini__btn--next { right: .7rem; }
 .origen__texto h3 { font-size: clamp(1.5rem, 3vw, 2rem); margin-bottom: 1rem; }
 .origen__texto p { margin-bottom: 1.1rem; color: var(--gris-claro); font-size: 1.05rem; }
 .origen__texto p a { color: var(--blanco); border-bottom: 1px solid var(--rojo); }

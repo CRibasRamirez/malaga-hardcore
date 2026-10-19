@@ -18,7 +18,7 @@
   <meta property="og:image" content="https://www.malagahxc.com/logo.png">
   <meta property="og:locale" content="en_GB">
   <meta name="twitter:card" content="summary">
-  <link rel="stylesheet" href="../style.css?v=20261019">
+  <link rel="stylesheet" href="../style.css?v=20261019b">
   <link rel="icon" type="image/png" href="../logo.png">
   <script type="application/ld+json">
   {
@@ -96,8 +96,13 @@
 
       <!-- ===== CÓMO EMPEZÓ ===== -->
       <div class="origen">
-        <figure class="origen__mural">
-          <img src="../mural.jpg" alt="«Málaga Hardcore» graffiti mural by @desska.98 with the names of underground bands from the scene" loading="lazy">
+        <figure class="origen__mural" id="galeria-mural">
+          <div class="galeria-mini">
+            <img src="../mural.jpg" alt="«Málaga Hardcore» graffiti mural by @desska.98 with the names of underground bands from the scene" loading="lazy" class="activa">
+            <img src="../mural-2.jpg" alt="Another view of the «Málaga Hardcore» mural by @desska.98" loading="lazy">
+            <button class="galeria-mini__btn galeria-mini__btn--prev" data-dir="-1" aria-label="Previous photo">&#8249;</button>
+            <button class="galeria-mini__btn galeria-mini__btn--next" data-dir="1" aria-label="Next photo">&#8250;</button>
+          </div>
           <figcaption>Mural by <a href="https://www.instagram.com/desska.98/" target="_blank" rel="noopener">@desska.98</a></figcaption>
         </figure>
         <div class="origen__texto">
@@ -191,6 +196,15 @@
     });
     // Año automático
     document.getElementById('anio').textContent = new Date().getFullYear();
+
+    // ===== Fotos del mural: botones para pasar de una a otra =====
+    const fotosMural = document.querySelectorAll('#galeria-mural img');
+    let fotoActual = 0;
+    document.querySelectorAll('#galeria-mural .galeria-mini__btn').forEach(b => b.addEventListener('click', () => {
+      fotosMural[fotoActual].classList.remove('activa');
+      fotoActual = (fotoActual + +b.dataset.dir + fotosMural.length) % fotosMural.length;
+      fotosMural[fotoActual].classList.add('activa');
+    }));
 
     // ===== Carrusel de carteles de fondo en la portada =====
     // Próximos primero (en color y con borde rojo), después el histórico (en blanco y negro).
