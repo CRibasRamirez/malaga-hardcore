@@ -46,3 +46,16 @@ const HISTORICO = [
   { anio:2025, nombre:'Málaga Hardcore Fest', fecha:'11–12 Abril 2025', dia:'11', mes:'ABR',
     lugar:'Carretera de Cádiz · Málaga', cartel:'mhf1.jpg', fotos:[] }
 ];
+
+// ===== Traducción para las páginas en inglés (/en/) =====
+// Traduce meses y palabras sueltas de los datos de arriba. Si añadís texto nuevo
+// en "descripcion", podéis poner también "descripcion_en" con la versión en inglés.
+const TRADUCCION_EN = {
+  Enero:'January', Febrero:'February', Marzo:'March', Abril:'April', Mayo:'May', Junio:'June',
+  Julio:'July', Agosto:'August', Septiembre:'September', Octubre:'October', Noviembre:'November', Diciembre:'December',
+  ENE:'JAN', ABR:'APR', AGO:'AUG', DIC:'DEC',
+  Anticipadas:'Presale', Taquilla:'At the door'
+};
+function enIngles(texto) {
+  return String(texto).replace(/[A-Za-z]+/g, p => TRADUCCION_EN[p] || p);
+}

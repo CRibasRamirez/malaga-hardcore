@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hardcore, Metal &amp; Punk Gigs in Málaga, Spain — Málaga Hardcore</title>
+  <meta name="description" content="Upcoming hardcore, metal and punk concerts in Málaga, Spain. Gig calendar and tickets from the Málaga Hardcore cultural association.">
+  <meta name="keywords" content="Malaga hardcore, Málaga hardcore, hardcore Malaga Spain, metal Malaga, punk Malaga, concerts Malaga, gigs Malaga, live music Malaga, Malaga music scene, Costa del Sol hardcore, MLG HXC">
+  <link rel="canonical" href="https://www.malagahxc.com/en/eventos.html">
+  <link rel="alternate" hreflang="es" href="https://www.malagahxc.com/eventos.html">
+  <link rel="alternate" hreflang="en" href="https://www.malagahxc.com/en/eventos.html">
+  <link rel="alternate" hreflang="x-default" href="https://www.malagahxc.com/eventos.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Málaga Hardcore">
+  <meta property="og:title" content="Hardcore, Metal &amp; Punk Gigs in Málaga, Spain — Málaga Hardcore">
+  <meta property="og:description" content="Upcoming hardcore, metal and punk concerts in Málaga, Spain. Gig calendar and tickets from the Málaga Hardcore cultural association.">
+  <meta property="og:url" content="https://www.malagahxc.com/en/eventos.html">
+  <meta property="og:image" content="https://www.malagahxc.com/logo.png">
+  <meta property="og:locale" content="en_GB">
+  <meta name="twitter:card" content="summary">
+  <link rel="stylesheet" href="../style.css?v=20261019">
+  <link rel="icon" type="image/png" href="../logo.png">
+</head>
+<body>
+
+  <!-- ================= CABECERA ================= -->
+  <header class="cabecera">
+    <div class="contenedor">
+      <a href="index.html" class="logo"><img src="../logo-white.png" alt="Málaga Hardcore"><span class="logo__txt">MÁLAGA <span class="acento">HARDCORE</span></span></a>
+      <button class="nav-toggle" aria-label="Open menu">&#9776;</button>
+      <nav class="nav">
+        <a href="index.html">About us</a>
+        <a href="eventos.html" class="activo">Events</a>
+        <a href="bandas.html">Bands</a>
+        <a href="merch.html">Merch</a>
+        <a href="historico.html">Archive</a>
+      </nav>
+      <div class="idioma"><a href="../eventos.html" hreflang="es" lang="es" title="Español">ES</a><span class="activo">EN</span></div>
+    </div>
+  </header>
+
+  <!-- ================= CABECERA DE PÁGINA ================= -->
+  <section class="hero" style="min-height:42vh;">
+    <div class="hero__contenido">
+      <p class="hero__kicker">Calendar</p>
+      <h1 style="font-size:clamp(2.5rem,10vw,6rem);">Events</h1>
+      <p>Upcoming concerts and events. Click on each poster to get your ticket.</p>
+    </div>
+  </section>
+
+  <!-- ================= LISTA DE EVENTOS ================= -->
+  <section class="seccion">
+    <div class="contenedor">
+      <h2 class="titulo-seccion">Upcoming</h2>
+      <div class="grid-eventos" id="lista-proximos"></div>
+    </div>
+  </section>
+
+  <!-- ================= PIE ================= -->
+  <footer class="pie">
+    <div class="contenedor">
+      <div>
+        <h4>Málaga Hardcore</h4>
+        <p>Non-profit cultural association dedicated to the hardcore scene in Málaga, Spain.</p>
+        <div class="redes">
+          <a href="https://www.instagram.com/malagahardcore/?hl=es" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M12 2.2c3.2 0 3.6 0 4.9.1 1.2.1 1.8.3 2.2.4.6.2 1 .5 1.4.9.4.4.7.8.9 1.4.2.4.3 1 .4 2.2.1 1.3.1 1.7.1 4.9s0 3.6-.1 4.9c-.1 1.2-.2 1.8-.4 2.2-.2.6-.5 1-.9 1.4-.4.4-.8.7-1.4.9-.4.2-1 .3-2.2.4-1.3.1-1.7.1-4.9.1s-3.6 0-4.9-.1c-1.2-.1-1.8-.2-2.2-.4-.6-.2-1-.5-1.4-.9-.4-.4-.7-.8-.9-1.4-.2-.4-.3-1-.4-2.2C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.9c.1-1.2.2-1.8.4-2.2.2-.6.5-1 .9-1.4.4-.4.8-.7 1.4-.9.4-.2 1-.3 2.2-.4C8.4 2.2 8.8 2.2 12 2.2Zm0 1.8c-3.1 0-3.5 0-4.7.1-.9 0-1.4.2-1.7.3-.4.2-.7.3-1 .6-.3.3-.5.6-.6 1-.1.3-.3.8-.3 1.7-.1 1.2-.1 1.6-.1 4.7s0 3.5.1 4.7c0 .9.2 1.4.3 1.7.2.4.3.7.6 1 .3.3.6.5 1 .6.3.1.8.3 1.7.3 1.2.1 1.6.1 4.7.1s3.5 0 4.7-.1c.9 0 1.4-.2 1.7-.3.4-.2.7-.3 1-.6.3-.3.5-.6.6-1 .1-.3.3-.8.3-1.7.1-1.2.1-1.6.1-4.7s0-3.5-.1-4.7c0-.9-.2-1.4-.3-1.7-.2-.4-.3-.7-.6-1-.3-.3-.6-.5-1-.6-.3-.1-.8-.3-1.7-.3-1.2-.1-1.6-.1-4.7-.1Zm0 3.1a4.9 4.9 0 1 1 0 9.8 4.9 4.9 0 0 1 0-9.8Zm0 8.1a3.2 3.2 0 1 0 0-6.4 3.2 3.2 0 0 0 0 6.4Zm6.3-8.4a1.15 1.15 0 1 1-2.3 0 1.15 1.15 0 0 1 2.3 0Z"/></svg></a>
+          <a href="https://www.youtube.com/@M%C3%A1lagaHardcore" target="_blank" rel="noopener" aria-label="YouTube"><svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor" aria-hidden="true"><path d="M23 7.5a3 3 0 0 0-2.1-2.1C19 4.9 12 4.9 12 4.9s-7 0-8.9.5A3 3 0 0 0 1 7.5 31 31 0 0 0 .5 12 31 31 0 0 0 1 16.5a3 3 0 0 0 2.1 2.1c1.9.5 8.9.5 8.9.5s7 0 8.9-.5a3 3 0 0 0 2.1-2.1c.4-1.5.5-3 .5-4.5s-.1-3-.5-4.5ZM9.8 15.3V8.7l5.7 3.3-5.7 3.3Z"/></svg></a>
+        </div>
+      </div>
+      <div>
+        <h4>Sections</h4>
+        <ul>
+          <li><a href="index.html">About us</a></li>
+          <li><a href="eventos.html">Events</a></li>
+          <li><a href="bandas.html">Bands</a></li>
+          <li><a href="merch.html">Merch</a></li>
+          <li><a href="historico.html">Archive</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="mailto:info@malagahxc.com">info@malagahxc.com</a></li>
+          <li>Málaga, Spain</li>
+        </ul>
+      </div>
+    </div>
+    <p class="copyright">© <span id="anio"></span> Málaga Hardcore · Cultural Association. Made with noise.</p>
+  </footer>
+
+  <script src="../eventos-data.js?v=20261019"></script>
+  <script>
+    document.querySelector('.nav-toggle').addEventListener('click', function () {
+      document.querySelector('.nav').classList.toggle('abierto');
+    });
+    document.getElementById('anio').textContent = new Date().getFullYear();
+
+    // ===== Próximos eventos (los datos están en eventos-data.js) =====
+    document.getElementById('lista-proximos').innerHTML = PROXIMOS.length ? PROXIMOS.map(e =>
+      '<article class="evento">' +
+        '<div class="evento__cartel">' +
+          '<span class="evento__fecha"><span class="dia">' + e.dia + '</span><span class="mes">' + enIngles(e.mes) + '</span></span>' +
+          '<img src="../' + e.cartel + '" alt="' + (e.alt || e.nombre) + '">' +
+        '</div>' +
+        '<div class="evento__cuerpo">' +
+          '<h3>' + e.nombre + '</h3>' +
+          '<p class="evento__meta">' + e.lugar + '</p>' +
+          '<p>' + (e.descripcion_en || enIngles(e.descripcion)) + '</p>' +
+          (e.entradas ? '<a href="' + e.entradas + '" target="_blank" rel="noopener" class="btn">Buy tickets</a>' : '') +
+        '</div>' +
+      '</article>'
+    ).join('') : '<p class="banda-vacio">New dates coming soon.</p>';
+  </script>
+</body>
+</html>

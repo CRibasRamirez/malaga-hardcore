@@ -26,6 +26,23 @@ Para pasar un evento al histórico: corta su bloque de `PROXIMOS`, pégalo arrib
 del todo en `HISTORICO` (con `anio`, `fecha`, `lugar`, `cartel` y `fotos`) y
 mueve su cartel de la raíz a `fotos-historico/`.
 
+## Versión en inglés
+
+La carpeta `en/` tiene las mismas páginas traducidas al inglés (el botón ES | EN
+de la cabecera cambia entre ellas). Comparten imágenes, `style.css`,
+`bandas.csv` y `eventos-data.js` con la versión en español.
+
+- Si cambiáis un texto de una página, cambiad también su versión en `en/`.
+- Los eventos solo se editan una vez, en `eventos-data.js`: los meses se traducen
+  solos. Para la descripción de un próximo evento podéis añadir `descripcion_en`.
+
+## Si un cambio de diseño no se ve en la web
+
+Los navegadores guardan `style.css` y `eventos-data.js` en caché. Al cambiar
+cualquiera de los dos, sube el número `?v=...` que acompaña a su enlace en
+todos los `.html` (por ejemplo, poned la fecha del día) para que se descargue
+la versión nueva.
+
 ## Qué falta por rellenar (busca estos textos en los archivos)
 
 1. **Logo** — en la cabecera pone `MÁLAGA HC` como texto. Para usar vuestro logo,

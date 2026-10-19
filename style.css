@@ -126,6 +126,18 @@ h2.titulo-seccion::after {
 .nav a:hover { color: var(--blanco); }
 .nav a.activo { color: var(--blanco); border-color: var(--rojo); }
 
+/* selector de idioma ES | EN */
+.idioma {
+  display: flex; margin-left: 1rem;
+  border: 1px solid var(--borde);
+  font-family: 'Oswald', sans-serif; font-weight: 500;
+  font-size: .78rem; letter-spacing: 1px; line-height: 1;
+}
+.idioma a, .idioma span { padding: .45rem .55rem; }
+.idioma a { color: var(--gris); transition: color .2s; }
+.idioma a:hover { color: var(--blanco); }
+.idioma .activo { background: var(--rojo); color: #fff; }
+
 /* botón menú móvil */
 .nav-toggle {
   display: none;
@@ -237,6 +249,8 @@ h2.titulo-seccion::after {
 .origen__mural img { width: 100%; aspect-ratio: 16/10; object-fit: cover; object-position: center 62%; }
 .origen__texto h3 { font-size: clamp(1.5rem, 3vw, 2rem); margin-bottom: 1rem; }
 .origen__texto p { margin-bottom: 1.1rem; color: var(--gris-claro); font-size: 1.05rem; }
+.origen__texto p a { color: var(--blanco); border-bottom: 1px solid var(--rojo); }
+.origen__texto p a:hover { color: var(--rojo); }
 .origen__carteles { display: flex; gap: .9rem; margin-top: 1.6rem; }
 .origen__cartel { width: 96px; transition: transform .12s; }
 .origen__cartel:hover { transform: translateY(-3px); }
@@ -425,6 +439,8 @@ h2.titulo-seccion::after {
   .nav.abierto { display: flex; }
   .nav a { padding: .9rem 1.2rem; border-bottom: 1px solid var(--borde); }
   .nav-toggle { display: block; }
+  .idioma { margin-left: auto; margin-right: .7rem; }
+  .nav-toggle { order: 3; }
   .about { grid-template-columns: 1fr; }
   .origen { grid-template-columns: 1fr; gap: 2rem; }
   .accesos { grid-template-columns: 1fr; }
