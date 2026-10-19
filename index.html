@@ -55,7 +55,9 @@
   </header>
 
   <!-- ================= HERO ================= -->
-  <section class="hero">
+  <section class="hero hero--carrusel">
+    <!-- Carrusel de carteles de fondo: se rellena solo con los datos de eventos-data.js -->
+    <div class="hero__carrusel" aria-hidden="true"><div class="hero__pista" id="carrusel"></div></div>
     <div class="hero__contenido">
       <img src="logo-white.png" alt="Málaga Hardcore" class="hero__logo">
       <p class="hero__kicker">Asociación Cultural · Málaga</p>
@@ -151,6 +153,7 @@
     <p class="copyright">© <span id="anio"></span> Málaga Hardcore · Asociación Cultural. Hecho con ruido.</p>
   </footer>
 
+  <script src="eventos-data.js"></script>
   <script>
     // Menú móvil
     document.querySelector('.nav-toggle').addEventListener('click', function () {
@@ -158,6 +161,22 @@
     });
     // Año automático
     document.getElementById('anio').textContent = new Date().getFullYear();
+
+    // ===== Carrusel de carteles de fondo en la portada =====
+    // Próximos primero (en color y con borde rojo), después el histórico (en blanco y negro).
+    // Los datos están en eventos-data.js
+    const slide = (e, proximo, i) =>
+      '<a class="hero__cartel' + (proximo ? ' hero__cartel--proximo' : '') + '" tabindex="-1" href="' +
+        (proximo ? 'eventos.html' : 'historico.html#ev-' + i) + '">' +
+        '<span class="hero__etiqueta">' + (proximo ? 'Próximo · ' + e.dia + ' ' + e.mes : 'Histórico · ' + e.fecha) + '</span>' +
+        '<img src="' + (proximo ? '' : 'fotos-historico/') + e.cartel + '" alt="">' +
+      '</a>';
+    const carteles =
+      PROXIMOS.map(e => slide(e, true)).join('') +
+      HISTORICO.map((e, i) => slide(e, false, i)).join('');
+    const pista = document.getElementById('carrusel');
+    pista.innerHTML = carteles + carteles;   // duplicado para que el bucle sea continuo
+    pista.style.animationDuration = (PROXIMOS.length + HISTORICO.length) * 5 + 's';
   </script>
 </body>
 </html>

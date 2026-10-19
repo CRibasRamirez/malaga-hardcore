@@ -17,6 +17,15 @@ servidor ni base de datos: son archivos HTML que se abren en cualquier navegador
 Haz doble clic en `index.html` y se abrirá en el navegador. Los enlaces entre
 páginas funcionan sin necesidad de nada más.
 
+## Eventos (próximos e histórico)
+
+Todos los eventos están en `eventos-data.js`. Desde ahí se rellenan solos el
+carrusel de Inicio, la página de Eventos y el Histórico.
+
+Para pasar un evento al histórico: corta su bloque de `PROXIMOS`, pégalo arriba
+del todo en `HISTORICO` (con `anio`, `fecha`, `lugar`, `cartel` y `fotos`) y
+mueve su cartel de la raíz a `fotos-historico/`.
+
 ## Qué falta por rellenar (busca estos textos en los archivos)
 
 1. **Logo** — en la cabecera pone `MÁLAGA HC` como texto. Para usar vuestro logo,

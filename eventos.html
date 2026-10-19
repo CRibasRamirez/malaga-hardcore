@@ -48,37 +48,7 @@
   <section class="seccion">
     <div class="contenedor">
       <h2 class="titulo-seccion">Próximos</h2>
-      <div class="grid-eventos">
-
-        <!-- ===== FATAL MOVE + SELF MADE ===== -->
-        <article class="evento">
-          <div class="evento__cartel">
-            <span class="evento__fecha"><span class="dia">08</span><span class="mes">OCT</span></span>
-            <img src="cartel-fatalmove.jpg" alt="Fatal Move + Self Made">
-          </div>
-          <div class="evento__cuerpo">
-            <h3>Fatal Move + Self Made</h3>
-            <p class="evento__meta">Sala Core · Jue · Málaga</p>
-            <p>Fatal Move (Amberes HXC) + Self Made (Málaga HXC). Anticipadas 10&euro; / Taquilla 12&euro;.</p>
-            <a href="https://entradium.com/en/events/fatal-move-selfmade" target="_blank" rel="noopener" class="btn">Comprar entradas</a>
-          </div>
-        </article>
-
-        <!-- ===== HALLOWEEN FEST ===== -->
-        <article class="evento">
-          <div class="evento__cartel">
-            <span class="evento__fecha"><span class="dia">31</span><span class="mes">OCT</span></span>
-            <img src="cartel-halloween.jpg" alt="Halloween Fest — Stitched, Nihility, Abysser, Prophane, Swordlaek">
-          </div>
-          <div class="evento__cuerpo">
-            <h3>Halloween Fest</h3>
-            <p class="evento__meta">Peña El Patio · Torremolinos</p>
-            <p>Stitched + Nihility + Abysser + Prophane + Swordlaek. Anticipadas 15&euro; / Taquilla 20&euro;.</p>
-            <a href="https://entradium.com/es/events/halloween-fest-torremolinos" target="_blank" rel="noopener" class="btn">Comprar entradas</a>
-          </div>
-        </article>
-
-      </div>
+      <div class="grid-eventos" id="lista-proximos"></div>
     </div>
   </section>
 
@@ -114,11 +84,28 @@
     <p class="copyright">© <span id="anio"></span> Málaga Hardcore · Asociación Cultural. Hecho con ruido.</p>
   </footer>
 
+  <script src="eventos-data.js"></script>
   <script>
     document.querySelector('.nav-toggle').addEventListener('click', function () {
       document.querySelector('.nav').classList.toggle('abierto');
     });
     document.getElementById('anio').textContent = new Date().getFullYear();
+
+    // ===== Próximos eventos (los datos están en eventos-data.js) =====
+    document.getElementById('lista-proximos').innerHTML = PROXIMOS.length ? PROXIMOS.map(e =>
+      '<article class="evento">' +
+        '<div class="evento__cartel">' +
+          '<span class="evento__fecha"><span class="dia">' + e.dia + '</span><span class="mes">' + e.mes + '</span></span>' +
+          '<img src="' + e.cartel + '" alt="' + (e.alt || e.nombre) + '">' +
+        '</div>' +
+        '<div class="evento__cuerpo">' +
+          '<h3>' + e.nombre + '</h3>' +
+          '<p class="evento__meta">' + e.lugar + '</p>' +
+          '<p>' + e.descripcion + '</p>' +
+          (e.entradas ? '<a href="' + e.entradas + '" target="_blank" rel="noopener" class="btn">Comprar entradas</a>' : '') +
+        '</div>' +
+      '</article>'
+    ).join('') : '<p class="banda-vacio">Pronto anunciaremos nuevas fechas.</p>';
   </script>
 </body>
 </html>

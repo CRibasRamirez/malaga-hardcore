@@ -84,39 +84,13 @@
     <p class="copyright">© <span id="anio"></span> Málaga Hardcore · Asociación Cultural. Hecho con ruido.</p>
   </footer>
 
+  <script src="eventos-data.js"></script>
   <script>
     document.querySelector('.nav-toggle').addEventListener('click', function () {
       document.querySelector('.nav').classList.toggle('abierto');
     });
     document.getElementById('anio').textContent = new Date().getFullYear();
 
-    // ===== Eventos del histórico (ordenados del más reciente al más antiguo) =====
-    // Para añadir fotos de un evento: mételas en la carpeta fotos-historico/
-    // y añade sus nombres de archivo al array "fotos", p.ej. fotos: ['mhf2-1.jpg','mhf2-2.jpg']
-    const EVENTOS = [
-      { anio:2026, nombre:'Fully Alive Fest', fecha:'12 Septiembre 2026', dia:'12', mes:'SEP',
-        lugar:'Sala Trinchera · Málaga', cartel:'fullyalive.jpg', fotos:[] },
-      { anio:2026, nombre:'Fulminar España Tour', fecha:'22 Agosto 2026', dia:'22', mes:'AGO',
-        lugar:'Ciberpunk Club · Fuengirola', cartel:'fulminar.jpg', fotos:[] },
-      { anio:2026, nombre:'Verbal Behavior + P.Human', fecha:'30 Mayo 2026', dia:'30', mes:'MAY',
-        lugar:'Sala Core · Málaga', cartel:'verbalbehavior.jpg', fotos:[] },
-      { anio:2026, nombre:'Málaga Hardcore Fest II', fecha:'15–18 Abril 2026', dia:'15', mes:'ABR',
-        lugar:'Peña El Patio · Torremolinos', cartel:'mhf2.jpg', fotos:[] },
-      { anio:2026, nombre:'Málaga Hardcore Meeting', fecha:'23 Enero 2026', dia:'23', mes:'ENE',
-        lugar:'El Taller · Málaga', cartel:'meeting.jpg', fotos:[] },
-      { anio:2025, nombre:'Winter Ritual', fecha:'12 Diciembre 2025', dia:'12', mes:'DIC',
-        lugar:'Peña El Patio · Torremolinos', cartel:'winterritual.jpg', fotos:[] },
-      { anio:2025, nombre:'Fear The Lord + Clericbeast + Times of War', fecha:'8 Noviembre 2025', dia:'08', mes:'NOV',
-        lugar:'Sala Marte · Málaga', cartel:'feartelord.jpg', fotos:[] },
-      { anio:2025, nombre:'El Nueve Once + Hall of Blame + Pachydermo Scato', fecha:'6 Agosto 2025', dia:'06', mes:'AGO',
-        lugar:'Sala Core · Málaga', cartel:'elnueveonce.jpg', fotos:[] },
-      { anio:2025, nombre:'Push! + Selfmade', fecha:'11 Julio 2025', dia:'11', mes:'JUL',
-        lugar:'Sala Core · Málaga', cartel:'push.jpg', fotos:[] },
-      { anio:2025, nombre:'Málaga HXC Sessions', fecha:'23 Mayo 2025', dia:'23', mes:'MAY',
-        lugar:'Sala Marte · Málaga', cartel:'sessions.jpg', fotos:[] },
-      { anio:2025, nombre:'Málaga Hardcore Fest', fecha:'11–12 Abril 2025', dia:'11', mes:'ABR',
-        lugar:'Carretera de Cádiz · Málaga', cartel:'mhf1.jpg', fotos:[] }
-    ];
 
     function cardHTML(e, i) {
       return '<article class="evento evento--click" data-i="' + i + '">' +
@@ -133,7 +107,7 @@
 
     const lista = document.getElementById('lista-eventos');
     let html = '', anioActual = null;
-    EVENTOS.forEach((e, i) => {
+    HISTORICO.forEach((e, i) => {
       if (e.anio !== anioActual) {
         if (anioActual !== null) html += '</div>';
         html += '<h3 class="historico-anio">' + e.anio + '</h3><div class="grid-eventos">';
@@ -172,8 +146,12 @@
       if (!el) return;
       lista.querySelectorAll('.evento').forEach(n => n.classList.remove('activa'));
       el.classList.add('activa');
-      pintarEvento(EVENTOS[+el.dataset.i]);
+      pintarEvento(HISTORICO[+el.dataset.i]);
     });
+
+    // Abrir directamente un evento si se llega con historico.html#ev-N (p.ej. desde el carrusel de Inicio)
+    const m = location.hash.match(/^#ev-(\d+)$/);
+    if (m && HISTORICO[+m[1]]) lista.querySelector('[data-i="' + m[1] + '"]').click();
   </script>
 </body>
 </html>
