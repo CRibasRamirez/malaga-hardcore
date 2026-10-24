@@ -13,7 +13,8 @@ const PROXIMOS = [
   { nombre:'Halloween Fest', dia:'31', mes:'OCT',
     lugar:'La Nave', cartel:'cartel-halloween.jpg',
     alt:'Halloween Fest — Stitched, Nihility, Abysser, Prophane, Swordlaek',
-    descripcion:'Stitched + Nihility + Abysser + Prophane + Swordlaek. Anticipadas 15&euro; / Taquilla 20&euro;.',
+    descripcion:'Stitched + Nihility + Abysser + Prophane + Swordlaek. Aportación online 15&euro; / Aportación en puerta 20&euro;.',
+    descripcion_en:'Stitched + Nihility + Abysser + Prophane + Swordlaek. Online contribution 15&euro; / Contribution at the door 20&euro;.',
     entradas:'https://entradium.com/es/events/halloween-fest-torremolinos' }
 ];
 
