@@ -11,7 +11,7 @@
 // El cartel va en la raíz de la web (p.ej. cartel-halloween.jpg).
 const PROXIMOS = [
   { nombre:'Halloween Fest', dia:'31', mes:'OCT',
-    lugar:'Peña El Patio · Torremolinos', cartel:'cartel-halloween.jpg',
+    lugar:'La Nave', cartel:'cartel-halloween.jpg',
     alt:'Halloween Fest — Stitched, Nihility, Abysser, Prophane, Swordlaek',
     descripcion:'Stitched + Nihility + Abysser + Prophane + Swordlaek. Anticipadas 15&euro; / Taquilla 20&euro;.',
     entradas:'https://entradium.com/es/events/halloween-fest-torremolinos' }
